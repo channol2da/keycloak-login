@@ -1,43 +1,45 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
+import axios from "axios";
 
 function App() {
-    const [hello, setHello] = useState('')
+    const [id, setId] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [msg, setMsg] = useState("");
 
     useEffect(() => {
-        axios.get('/api/hello')
-            .then(response => setHello(response.data))
-            .catch(error => console.log(error))
-    }, []);
+        /*...*/
+    }, [msg])
+
+    const loginFunc = (e) => {
+        e.preventDefault(); // Submit 후 Reload 막기
+        /*...*/
+        let body = {
+            id,
+            password
+        };
+
+        axios.post("/api/login", body)
+            .then((res) => {
+                console.log(res.data)
+            });
+    }
 
     return (
-        <div>
-            백엔드에서 가져온 데이터입니다 : {hello}
-        </div>
+        <>
+            <h1>Login Component</h1>
+            <form onSubmit={loginFunc}>
+                <label htmlFor="id"> ID: </label>
+                <input type="text" id="id"
+                       value={id} onChange={(e) => setId(e.target.value)}/><br />
+                <label htmlFor="id"> PW: </label>
+                <input type="password"
+                       value={password} onChange={(e) => setPassword(e.target.value)}/><br />
+                <button type="submit"> Login</button><br />
+                {msg}
+            </form>
+        </>
     );
 }
 
-export default App;
-/* DEFAULT */
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-//
-// export default App;
+export default App
