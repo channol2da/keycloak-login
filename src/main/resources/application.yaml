@@ -1,0 +1,15 @@
+server:
+  port: 6001
+
+#keycloak:
+#  auth-server-url: http://localhost:8180/auth
+#  realm: SpringBootKeycloak
+#  resource: login-app
+#  public-client: true
+#  security-constraints:
+#    - authRoles: user
+#    - securityCollections:
+#      - patterns: /users/*
+#
+#
+
