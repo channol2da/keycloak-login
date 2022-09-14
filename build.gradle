@@ -9,6 +9,10 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+ext {
+    set('keycloakVersion', '19.0.1')
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
@@ -27,6 +31,17 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    // Keycloak
+    implementation group: 'org.keycloak', name: 'keycloak-spring-boot-starter', version: '19.0.1'
+    implementation group: 'org.keycloak.bom', name: 'keycloak-adapter-bom', version: '19.0.1', ext: 'pom'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.keycloak.bom:keycloak-adapter-bom:${keycloakVersion}"
+    }
 }
 
 tasks.named('test') {

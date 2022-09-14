@@ -1,0 +1,12 @@
+{
+  "realm": "key-web-login",
+  "auth-server-url": "http://localhost:8080/",
+  "ssl-required": "external",
+  "resource": "key-web-login-cli",
+  "verify-token-audience": true,
+  "credentials": {
+    "secret": "1ZGmkYnz97sR9nVBV5FKPSzuxIBCZlP7"
+  },
+  "use-resource-role-mappings": true,
+  "confidential-port": 0
+}
